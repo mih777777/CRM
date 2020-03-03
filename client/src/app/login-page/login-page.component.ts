@@ -3,12 +3,14 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../shared/services/auth.service';
 import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { MaterialService } from '../shared/classes/material.service';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']
 })
+
 export class LoginPageComponent implements OnInit, OnDestroy{
 
   form: FormGroup
@@ -28,9 +30,11 @@ export class LoginPageComponent implements OnInit, OnDestroy{
     
     this.route.queryParams.subscribe((params: Params) => {
       if(params['registered']) {
-        //Теперь вы можете зайти в смстему используя свои данные
+        
+        MaterialService.toast('Теперь вы можете зайти в смстему используя свои данные')
       } else if (params['accessDenied']) {
-        //Для начала автлризуйтесь в системе
+        
+        MaterialService.toast('Для начала автлризуйтесь в системе')
       }
     })
   }
@@ -46,7 +50,7 @@ export class LoginPageComponent implements OnInit, OnDestroy{
     this.aSub = this.authService.login(this.form.value).subscribe(
       () => this.router.navigate(['/overview']),
       error => {
-        console.warn(error)
+        MaterialService.toast(error.error.message)
       }
     )
   }
