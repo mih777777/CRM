@@ -11,6 +11,7 @@ import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.co
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 import { TokenInterceptor } from './shared/classes/token.interceptor';
+import { OverviewPageComponent } from './overview-page/overview-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TokenInterceptor } from './shared/classes/token.interceptor';
     LoginPageComponent,
     RegisterPageComponent,
     AuthLayoutComponent,
-    SiteLayoutComponent
+    SiteLayoutComponent,
+    OverviewPageComponent
   ],
   imports: [
     BrowserModule,

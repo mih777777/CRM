@@ -31,12 +31,18 @@ export class LoginPageComponent implements OnInit, OnDestroy{
     this.route.queryParams.subscribe((params: Params) => {
       if(params['registered']) {
         
-        MaterialService.toast('Теперь вы можете зайти в смстему используя свои данные')
+          MaterialService.toast('Теперь вы можете зайти в смстему используя свои данные')
+
       } else if (params['accessDenied']) {
-        MaterialService.toast('Для начала автлризуйтесь в системе')
+
+          MaterialService.toast('Для начала автлризуйтесь в системе')
+
       } else if (params['sessionFaild']){
-        MaterialService.toast('Пожалуйста войдите в систему')
+
+          MaterialService.toast('Пожалуйста войдите в систему')
+
       }
+      
     })
   }
 
